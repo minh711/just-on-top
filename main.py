@@ -1,3 +1,4 @@
+import os
 import tkinter as tk
 from tkinter import scrolledtext, filedialog, messagebox
 import datetime
@@ -6,6 +7,10 @@ from languages import languages
 from guide import GuideWindow
 
 current_language = "English"
+
+def resource_path(relative_path):
+    """ Get path to resource during execution """
+    return os.path.join(os.path.dirname(__file__), relative_path)
 
 def start_drag(event):
     global drag_data
@@ -106,8 +111,8 @@ def create_windows():
 
     guide_window = GuideWindow(root, languages, current_language)
     
-    icon = tk.PhotoImage(file='jot_icon.png')
-    root.iconphoto(True, icon)
+    icon_path = resource_path('jot_icon.ico')
+    control_window.iconbitmap(icon_path)
 
 def create_buttons(control_window):
     global buttons
