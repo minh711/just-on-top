@@ -1,6 +1,7 @@
 from tkinter import colorchooser, simpledialog
 from languages import languages
 
+default_font = "SVN-Comic Sans MS"
 current_language = "English"
 
 def update_text(text_area, label_text):
@@ -33,7 +34,7 @@ def adjust_font_size(label_text):
         maxvalue=72
     )
     if font_size:
-        label_text.config(font=('Helvetica', font_size, 'bold'))
+        label_text.config(font=(default_font, font_size, 'bold'))
     adjust_window_size(label_text)
 
 def toggle_window(top):

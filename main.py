@@ -6,6 +6,8 @@ from ui_controls import update_text, update_color_text, update_color_background,
 from languages import languages
 from guide import GuideWindow
 
+default_font = "SVN-Comic Sans MS"
+
 current_language = "English"
 
 def resource_path(relative_path):
@@ -64,18 +66,18 @@ def create_windows():
     label_text = tk.Label(
         top,
         text="Your text here",
-        font=('Helvetica', 12, 'bold'),
+        font=(default_font, 12, 'bold'),
         fg='white',
         bg='#4A90E2',
-        padx=20,
-        pady=10,
+        padx=10,
+        pady=4,
         justify='left',
         anchor='e',
         bd=2,
         relief='solid',
         highlightbackground='#4A90E2',
         highlightthickness=1,
-        wraplength=300
+        wraplength=800
     )
     label_text.place(relx=1, rely=0, anchor='ne', x=-10, y=10)
 
@@ -84,7 +86,7 @@ def create_windows():
 
     control_window = tk.Toplevel(root)
     control_window.title("Just On Top")
-    control_window.geometry("360x300")
+    control_window.geometry("360x320")
     control_window.configure(bg='#F0F0F0')
     control_window.protocol("WM_DELETE_WINDOW", exit_application)
 
@@ -100,7 +102,7 @@ def create_windows():
     for lang in languages.keys():
         language_menu.add_command(label=lang, command=lambda l=lang: set_language(l))
 
-    text_area = scrolledtext.ScrolledText(control_window, width=36, height=5, bg='#FFFFFF', fg='black', font=('Helvetica', 12))
+    text_area = scrolledtext.ScrolledText(control_window, width=36, height=5, bg='#FFFFFF', fg='black', font=(default_font, 12))
     text_area.pack(pady=10, padx=10)
 
     create_buttons(control_window)

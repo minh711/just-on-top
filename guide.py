@@ -1,5 +1,7 @@
 import tkinter as tk
 
+default_font = "SVN-Comic Sans MS"
+
 class GuideWindow:
     def __init__(self, root, languages, current_language):
         self.root = root
@@ -20,7 +22,7 @@ class GuideWindow:
             text=self.languages[self.current_language]["guide_text"],
             bg='#F0F0F0',
             fg='black',
-            font=('Helvetica', 12),
+            font=(default_font, 12),
             justify='left',
             anchor='w',
             wraplength=300
