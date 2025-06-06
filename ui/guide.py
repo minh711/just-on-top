@@ -6,6 +6,7 @@ class GuideWindow:
         self.languages = languages
         self.current_language = current_language
         self.guide_window = None
+        self.text_widget = None
         self.create_window()
 
     def create_window(self):
@@ -15,23 +16,26 @@ class GuideWindow:
         self.guide_window.configure(bg='#F0F0F0')
         self.guide_window.withdraw()
 
-        self.guide_label = tk.Label(
+        self.text_widget = tk.Text(
             self.guide_window,
-            text=self.languages[self.current_language]["guide_text"],
+            wrap='word',
             bg='#F0F0F0',
             fg='black',
             font=('Helvetica', 12),
-            justify='left',
-            anchor='w',
-            wraplength=300
+            borderwidth=0
         )
-        self.guide_label.pack(pady=20, padx=20)
+        self.text_widget.pack(fill='both', expand=True, padx=20, pady=20)
+        self.text_widget.insert('1.0', self.languages[self.current_language]["guide_text"])
+        self.text_widget.config(state='disabled')  # Make it read-only
 
     def update_guide(self, languages, current_language):
         self.languages = languages
         self.current_language = current_language
-        if self.guide_window and self.guide_window.winfo_exists():
-            self.guide_label.config(text=self.languages[self.current_language]["guide_text"])
+        if self.text_widget:
+            self.text_widget.config(state='normal')
+            self.text_widget.delete('1.0', 'end')
+            self.text_widget.insert('1.0', self.languages[self.current_language]["guide_text"])
+            self.text_widget.config(state='disabled')
 
     def toggle(self):
         if self.guide_window is None or not self.guide_window.winfo_exists():

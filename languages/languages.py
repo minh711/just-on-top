@@ -5,7 +5,13 @@ languages = {
         "change_bg_color": "Change Background Color",
         "adjust_font_size": "Adjust Font Size",
         "toggle_text": "Toggle Text",
-        "guide_text": "Guide:\n\n- Enter your text in the text area.\n- Use the buttons to change text and background colors.\n- Adjust font size with the 'Adjust Font Size' button.\n- Drag the text by clicking and dragging.\n- Toggle the text window visibility using 'Toggle Text'.",
+        "guide_text": (
+            "Guide:\n\n"
+            "- Type your message in the text area.\n"
+            "- Use buttons to update text, change colors, or adjust font size.\n"
+            "- Click and drag the floating text window to reposition it.\n"
+            "- Use 'Toggle Text' to show or hide the floating window."
+        ),
         "language": "Language",
         "font_size_title": "Font Size",
         "font_size_prompt": "Enter font size:",
@@ -23,7 +29,13 @@ languages = {
         "change_bg_color": "Đổi màu nền",
         "adjust_font_size": "Điều chỉnh cỡ chữ",
         "toggle_text": "Bật/Tắt văn bản",
-        "guide_text": "Hướng dẫn:\n\n- Nhập văn bản vào ô.\n- Sử dụng các nút để thay đổi màu văn bản và nền.\n- Điều chỉnh cỡ chữ bằng nút 'Điều chỉnh cỡ chữ'.\n- Kéo văn bản bằng cách bấm và kéo.\n- Bật/Tắt cửa sổ văn bản.",
+        "guide_text": (
+            "Hướng dẫn:\n\n"
+            "- Nhập nội dung vào ô văn bản.\n"
+            "- Dùng các nút để cập nhật, thay đổi màu hoặc cỡ chữ.\n"
+            "- Kéo cửa sổ nổi bằng cách nhấn và kéo.\n"
+            "- Sử dụng 'Bật/Tắt văn bản' để ẩn/hiện cửa sổ."
+        ),
         "language": "Ngôn ngữ",
         "font_size_title": "Cỡ chữ",
         "font_size_prompt": "Nhập cỡ chữ:",
@@ -41,7 +53,13 @@ languages = {
         "change_bg_color": "背景色を変更",
         "adjust_font_size": "フォントサイズを調整",
         "toggle_text": "テキストを切り替え",
-        "guide_text": "ガイド:\n\n- テキストエリアに入力します。\n- ボタンを使ってテキストや背景色を変更します。\n- 'フォントサイズを調整' ボタンでサイズを調整します。\n- テキストをクリックしてドラッグします。\n- 「テキストを切り替え」を使用してウィンドウの表示/非表示を切り替えます。",
+        "guide_text": (
+            "ガイド:\n\n"
+            "- テキストエリアに入力します。\n"
+            "- ボタンで更新、色変更、サイズ調整ができます。\n"
+            "- テキストをドラッグして移動できます。\n"
+            "-「テキストを切り替え」でウィンドウを表示・非表示にします。"
+        ),
         "language": "言語",
         "font_size_title": "フォントサイズ",
         "font_size_prompt": "フォントサイズを入力してください:",
@@ -59,7 +77,13 @@ languages = {
         "change_bg_color": "更改背景颜色",
         "adjust_font_size": "调整字体大小",
         "toggle_text": "切换文本",
-        "guide_text": "指南:\n\n- 在文本区域输入文字。\n- 使用按钮更改文本和背景颜色。\n- 使用“调整字体大小”按钮调整字体大小。\n- 点击并拖动文本。\n- 使用“切换文本”按钮切换文本窗口的显示。",
+        "guide_text": (
+            "指南:\n\n"
+            "- 在文本框中输入内容。\n"
+            "- 使用按钮进行更新、更改颜色或调整字体大小。\n"
+            "- 拖动浮动窗口移动位置。\n"
+            "- 使用“切换文本”按钮显示或隐藏窗口。"
+        ),
         "language": "语言",
         "font_size_title": "字体大小",
         "font_size_prompt": "输入字体大小：",

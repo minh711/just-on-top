@@ -19,4 +19,8 @@ def create_buttons(parent, text_area, label_text):
     ]
 
     for text, cmd in btn_data:
-        tk.Button(parent, text=text, command=cmd).pack(pady=5, padx=10, fill='x')
+        tk.Button(
+            parent,
+            text=text,
+            command=cmd,
+        ).pack(pady=5, padx=10, fill='x')

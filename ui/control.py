@@ -13,25 +13,35 @@ def create_control_window(root, label_text, reload_window):
 
     control_window = tk.Toplevel(root)
     control_window.title("Just On Top")
-    control_window.geometry("360x300")
     control_window.configure(bg='#F0F0F0')
     control_window.protocol("WM_DELETE_WINDOW", exit_application)
 
     setup_menu(root, control_window, reload_window)
 
+    # --- Container Frame ---
+    container = tk.Frame(control_window, bg='#F0F0F0')
+    container.pack(fill='both', expand=True, padx=10, pady=10)
+
+    # --- Text Area ---
     text_area = scrolledtext.ScrolledText(
-        control_window,
+        container,
         width=36,
         height=5,
         bg='#FFFFFF',
         fg='black',
         font=('Helvetica', 12)
     )
-    text_area.pack(pady=10, padx=10)
+    text_area.pack(fill='both', expand=True, pady=(0, 10))
 
-    create_buttons(control_window, text_area, label_text)
+    # --- Buttons ---
+    create_buttons(container, text_area, label_text)
 
+    # --- Set icon ---
     icon_path = resource_path('assets/jot_icon.ico')
     control_window.iconbitmap(icon_path)
+
+    # --- Let window size to content ---
+    control_window.update_idletasks()
+    control_window.geometry("")  # Let Tkinter fit the window to its content
 
     return control_window, text_area
