@@ -16,3 +16,5 @@ pip install -r requirements.txt
 
 - [ ] Change opacity option
 - [ ] Save content
+- [ ] Split settings to the menu, only keep update and toggle button on the main window
+- [ ] Add preset theme switcher for floating window
