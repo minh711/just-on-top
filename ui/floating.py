@@ -9,6 +9,7 @@ def create_floating_window(root):
 
     label_text = tk.Label(
         top,
+        top.wm_attributes('-alpha', 0.8),
         text="Your text here",
         font=('Helvetica', 12, 'bold'),
         fg='white',
@@ -19,8 +20,6 @@ def create_floating_window(root):
         anchor='e',
         bd=2,
         relief='solid',
-        highlightbackground='#4A90E2',
-        highlightthickness=1,
         wraplength=300
     )
     label_text.place(relx=1, rely=0, anchor='ne', x=-10, y=10)

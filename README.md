@@ -11,3 +11,8 @@ Run this to install packages needed
 ```bash
 pip install -r requirements.txt
 ```
+
+## To-do list
+
+- [ ] Change opacity option
+- [ ] Save content
