@@ -110,7 +110,7 @@ def create_windows():
     help_menu.add_command(label=languages[current_language]["guide"], command=lambda: guide_window.toggle())
 
     guide_window = GuideWindow(root, languages, current_language)
-    
+
     icon_path = resource_path('jot_icon.ico')
     control_window.iconbitmap(icon_path)
 
@@ -142,7 +142,7 @@ def reload_window():
     top.destroy()
     control_window.destroy()
     create_windows()
-    
+
 def set_language(language):
     global current_language
     confirm = save_text()
