@@ -21,8 +21,6 @@ def create_control_window(root, label_text, reload_window):
     control_window.configure(bg="#F0F0F0")
     control_window.protocol("WM_DELETE_WINDOW", exit_application)
 
-    setup_menu(root, control_window, reload_window)
-
     # --- Container Frame ---
     container = tk.Frame(control_window, bg="#F0F0F0")
     container.pack(fill="both", expand=True, padx=10, pady=10)
@@ -79,6 +77,10 @@ def create_control_window(root, label_text, reload_window):
         save_after_id = control_window.after(500, auto_save_text)
 
     text_area.bind("<KeyRelease>", on_text_change)
+
+    setup_menu(
+        root, control_window, reload_window, text_area=text_area, label_text=label_text
+    )
 
     # --- Buttons ---
     create_buttons(container, text_area, label_text)
