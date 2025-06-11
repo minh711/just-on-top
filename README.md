@@ -20,10 +20,22 @@ Activate the virtual environment
 source venv/bin/activate
 ```
 
+or for Windows
+
+```bash
+.\venv\Scripts\Activate.ps1
+```
+
 Check if it activated
 
 ```bash
 which python3
+```
+
+or for Windows
+
+```bash
+python -c "import sys; print(sys.executable)"
 ```
 
 If the directory shows the current project folder, it means it activated.

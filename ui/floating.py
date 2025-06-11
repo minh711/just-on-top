@@ -10,21 +10,21 @@ def create_floating_window(root):
     top.configure(bg='#4A90E2')
     top.wm_attributes('-alpha', 0.8)
 
+    default_text = "Your text here"
+
     label_text = tk.Label(
         top,
-        text="Your text here",
+        text=default_text,
         font=('Helvetica', 12, 'bold'),
         fg='white',
         bg='#4A90E2',
-        padx=10,
-        pady=10,
         justify='left',
         anchor='w',
-        bd=0,
-        relief='flat',
+        bd=0, # bd=2
+        relief='flat', # relief='solid'
         wraplength=300
     )
-    label_text.place(relx=0, rely=0, anchor='nw', x=10, y=10)
+    label_text.place(relx=0, rely=0, anchor='nw', x=8, y=8)
 
     # Force geometry calculation
     top.update_idletasks()
@@ -34,7 +34,7 @@ def create_floating_window(root):
     label_height = label_text.winfo_reqheight()
 
     # Set window size to label size + padding (10px on each side)
-    padding = 10
+    padding = 8
     window_width = label_width + padding * 2
     window_height = label_height + padding * 2
     top.geometry(f"{window_width}x{window_height}")

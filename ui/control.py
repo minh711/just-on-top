@@ -23,6 +23,24 @@ def create_control_window(root, label_text, reload_window):
     container = tk.Frame(control_window, bg='#F0F0F0')
     container.pack(fill='both', expand=True, padx=10, pady=10)
 
+    # --- Symbol Buttons ---
+    symbol_frame = tk.Frame(container, bg='#F0F0F0')
+    symbol_frame.pack(fill='x', pady=(0, 10))
+
+    def insert_symbol(symbol):
+        text_area.insert('insert', symbol)
+
+    symbols = ['🟨', '✅', '❌', '⚠️', '🔥', '💡']
+    for sym in symbols:
+        btn = tk.Button(
+            symbol_frame,
+            text=sym,
+            font=('Helvetica', 12),
+            command=lambda s=sym: insert_symbol(s),
+            width=3
+        )
+        btn.pack(side='left', padx=2)
+
     # --- Text Area ---
     text_area = scrolledtext.ScrolledText(
         container,

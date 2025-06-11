@@ -1,9 +1,7 @@
 from appdirs import user_data_dir
 import os
 import json
-
-APP_NAME = "JustOnTop"
-SETTINGS_FILE = "settings.json"
+from utils.constants import APP_NAME, SETTINGS_FILE
 
 def get_settings_path():
     dir_path = user_data_dir(APP_NAME)
