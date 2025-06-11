@@ -1,6 +1,6 @@
 # Import the tkinter module for GUI components
 import tkinter as tk
-from ui.windows import create_windows
+from ui.windows_controller import create_windows
 
 # Main function to start the application
 def main():

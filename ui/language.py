@@ -1,16 +1,19 @@
 from languages.languages import languages
-from utils.settings import load_settings  # import settings loader
+from utils.settings import load_settings, save_settings
+from models.settings import Settings
+from utils.constants import DEFAULT_LANGUAGE
 
 # Load the saved language from disk (fallback to English)
-current_language = load_settings().get("language", "English")
+settings: Settings = load_settings()
+current_language: str = settings.get("language", DEFAULT_LANGUAGE)
 
-def set_language(language, root, reload_window):
+def set_language(language: str, root, reload_window):
     from utils.file_ops import save_text
-    from utils.settings import save_settings
     import ui.language as lang_module
 
     confirm = save_text()
     if confirm:
         lang_module.current_language = language
-        save_settings({"language": language})  # persist it
+        new_settings: Settings = {"language": language}
+        save_settings(new_settings)
         reload_window(root)

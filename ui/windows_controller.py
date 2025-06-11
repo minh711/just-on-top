@@ -3,8 +3,8 @@ from tkinter import scrolledtext
 from ui.menu import setup_menu
 from ui.drag import start_drag, do_drag
 from ui.controls import create_buttons
-from ui.floating import create_floating_window
-from ui.control import create_control_window
+from ui.windows.floating import create_floating_window
+from ui.windows.control import create_control_window
 from utils.file_ops import resource_path, save_text
 
 top = control_window = label_text = text_area = None

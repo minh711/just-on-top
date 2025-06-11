@@ -45,7 +45,7 @@ def create_control_window(root, label_text, reload_window):
     text_area = scrolledtext.ScrolledText(
         container,
         width=36,
-        height=5,
+        height=8,
         bg='#FFFFFF',
         fg='black',
         font=('Helvetica', 12)

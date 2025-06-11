@@ -36,5 +36,4 @@ def set_language(language, root, reload_window):
     if confirm:
         lang_module.current_language = language
         save_settings({"language": language})  # Save to disk
-        print(f"[DEBUG] Language set to: {language}")
         reload_window()

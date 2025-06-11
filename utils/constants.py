@@ -8,6 +8,7 @@ TEXTAREA_FG = "black"
 TEXTAREA_FONT = ("Helvetica", 12)
 
 # Defaults
+DEFAULT_LANGUAGE = "English"
 DEFAULT_TEXT = "Your text here"
 
 # Symbols to insert
