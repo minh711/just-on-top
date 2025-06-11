@@ -1,3 +1,4 @@
+import platform
 import tkinter as tk
 from tkinter import scrolledtext
 from ui.menu import setup_menu
@@ -37,8 +38,9 @@ def create_control_window(root, label_text, reload_window):
     create_buttons(container, text_area, label_text)
 
     # --- Set icon ---
-    icon_path = resource_path('assets/jot_icon.ico')
-    control_window.iconbitmap(icon_path)
+    if platform.system() == "Windows":
+        icon_path = resource_path('assets/jot_icon.ico')
+        control_window.iconbitmap(icon_path)
 
     # --- Let window size to content ---
     control_window.update_idletasks()

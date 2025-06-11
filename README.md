@@ -6,6 +6,30 @@ Open-source Python application for display a text always on top
 
 ## Development
 
+### 1. Virtual environment
+
+Create a virtual environment in project folder:
+
+```bash
+python3 -m venv venv
+```
+
+Activate the virtual environment
+
+```bash
+source venv/bin/activate
+```
+
+Check if it activated
+
+```bash
+which python3
+```
+
+If the directory shows the current project folder, it means it activated.
+
+### 2. Install packages
+
 Run this to install packages needed
 
 ```bash

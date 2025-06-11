@@ -15,6 +15,7 @@
     "tearoff",
     "transparentcolor",
     "ttkbootstrap",
+    "venv",
     "wraplength"
   ]
 }
