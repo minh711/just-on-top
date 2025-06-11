@@ -18,8 +18,8 @@ def create_floating_window(root):
         pady=10,
         justify='left',
         anchor='e',
-        bd=2,
-        relief='solid',
+        bd=0,
+        relief='flat',
         wraplength=300
     )
     label_text.place(relx=1, rely=0, anchor='ne', x=-10, y=10)
