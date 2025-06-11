@@ -9,7 +9,7 @@ current_language: str = settings.get("language", DEFAULT_LANGUAGE)
 
 def set_language(language: str, root, reload_window):
     from utils.file_ops import save_text
-    import ui.language as lang_module
+    import controls.language as lang_module
 
     confirm = save_text()
     if confirm:

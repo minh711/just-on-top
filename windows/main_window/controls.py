@@ -1,9 +1,9 @@
 import tkinter as tk
-import ui.language as lang_module
-from ui_controls.text import update_text
-from ui_controls.color import update_color_text, update_color_background
-from ui_controls.font import adjust_font_size
-from ui_controls.window import toggle_window
+import controls.language as lang_module
+from controls.text import update_text
+from controls.color import update_color_text, update_color_background
+from controls.font import adjust_font_size
+from controls.window import toggle_window
 
 def create_buttons(parent, text_area, label_text):
     # Dynamically fetch language each time in case it has changed

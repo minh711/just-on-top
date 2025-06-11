@@ -1,10 +1,10 @@
 import tkinter as tk
 from tkinter import scrolledtext
-from ui.menu import setup_menu
-from ui.drag import start_drag, do_drag
-from ui.controls import create_buttons
-from ui.windows.floating import create_floating_window
-from ui.windows.control import create_control_window
+from windows.main_window.menu import setup_menu
+from windows.floating_window.drag import start_drag, do_drag
+from windows.main_window.controls import create_buttons
+from windows.floating_window.floating_window import create_floating_window
+from windows.main_window.main_window import create_control_window
 from utils.file_ops import resource_path, save_text
 
 top = control_window = label_text = text_area = None

@@ -1,5 +1,5 @@
 from tkinter import simpledialog
-from ui.language import languages
+from controls.language import languages
 from .window import adjust_window_size
 
 current_language = "English"  # Make sure to sync with main app if it's dynamic

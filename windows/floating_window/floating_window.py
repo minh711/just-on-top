@@ -1,7 +1,7 @@
 import os
 import platform
 import tkinter as tk
-from ui.drag import start_drag, do_drag
+from windows.floating_window.drag import start_drag, do_drag
 
 def create_floating_window(root):
     top = tk.Toplevel(root)

@@ -1,8 +1,8 @@
 import os
 import datetime
 from tkinter import filedialog, messagebox
-from ui.language import current_language
-from ui.language import languages
+from controls.language import current_language
+from controls.language import languages
 
 def resource_path(relative_path):
     return os.path.join(os.path.dirname(__file__), '..', relative_path)

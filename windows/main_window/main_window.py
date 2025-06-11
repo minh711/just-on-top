@@ -1,8 +1,8 @@
 import platform
 import tkinter as tk
 from tkinter import scrolledtext
-from ui.menu import setup_menu
-from ui.controls import create_buttons
+from windows.main_window.menu import setup_menu
+from windows.main_window.controls import create_buttons
 from utils.file_ops import resource_path, save_text
 
 def create_control_window(root, label_text, reload_window):

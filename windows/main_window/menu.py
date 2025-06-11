@@ -1,6 +1,6 @@
 from tkinter import Menu
-import ui.language as lang_module
-from ui.guide import GuideWindow
+import controls.language as lang_module
+from windows.guide_window.guide_window import GuideWindow
 from utils.file_ops import save_text
 from utils.settings import save_settings
 
