@@ -7,6 +7,7 @@ from utils.constants import DEFAULT_LANGUAGE
 settings: Settings = load_settings()
 current_language: str = settings.get("language", DEFAULT_LANGUAGE)
 
+
 def set_language(language: str, root, reload_window):
     from utils.file_ops import save_text
     import controls.language as lang_module

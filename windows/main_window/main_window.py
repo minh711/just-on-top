@@ -4,11 +4,13 @@ import customtkinter as ctk
 from tkinter import scrolledtext  # Still no CTk replacement with scrollbar
 from windows.main_window.menu import setup_menu
 from utils.file_ops import resource_path, save_text
-from utils.constants import SYMBOLS
+from utils.constants import SYMBOLS, DEFAULT_FONT, DEFAULT_FONT_SIZE
 from utils.settings import update_settings
 from controls.text import update_text
 import controls.language as lang_module
 from controls.window import toggle_window
+from models.settings import Settings
+from utils.settings import load_settings
 
 
 def center_window(window, width, height):
@@ -21,7 +23,7 @@ def center_window(window, width, height):
     window.geometry(f"{width}x{height}+{x}+{y}")
 
 
-def create_control_window(root, label_text, reload_window):
+def create_control_window(root, floating_window, label_text, reload_window):
     # Languages
     lang = lang_module.current_language
     texts = lang_module.languages[lang]
@@ -55,16 +57,22 @@ def create_control_window(root, label_text, reload_window):
             command=lambda s=sym: insert_symbol(s),
             width=30,
         ).pack(side="left", padx=2)
-    # ===================== End symbols =====================
+        # ===================== End symbols =====================
 
     # ===================== Text area =====================
+    settings: Settings = load_settings()
+    content: str = settings.get("content", "")
+    font: str = settings.get("font", DEFAULT_FONT)
+    font_size: int = settings.get("font_size", DEFAULT_FONT_SIZE)
+
     text_area = ctk.CTkTextbox(
         master=container,
         width=400,
         height=160,
-        font=("Helvetica", 16),
+        font=(font, font_size),
         wrap="word",
     )
+    text_area.insert("1.0", content)
     text_area.pack(fill="both", expand=True, pady=(0, 10))
 
     save_after_id = None
@@ -85,7 +93,12 @@ def create_control_window(root, label_text, reload_window):
 
     # Menu
     setup_menu(
-        root, control_window, reload_window, text_area=text_area, label_text=label_text
+        root,
+        control_window,
+        floating_window,
+        reload_window,
+        text_area=text_area,
+        label_text=label_text,
     )
 
     # Toggle Label Window Button

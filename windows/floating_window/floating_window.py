@@ -2,24 +2,39 @@ import os
 import platform
 import tkinter as tk  # must use tkinter so it will on top of all virtual desktops
 from windows.floating_window.drag import start_drag, do_drag
-from utils.constants import PADDING
+from utils.constants import (
+    PADDING,
+    DEFAULT_COLOR,
+    DEFAULT_BACKGROUND_COLOR,
+    DEFAULT_CONTENT,
+    DEFAULT_FONT_SIZE,
+    DEFAULT_FONT,
+)
+from utils.settings import load_settings
+from models.settings import Settings
 
 
 def create_floating_window(root):
+    settings: Settings = load_settings()
+    color: str = settings.get("color", DEFAULT_COLOR)
+    background_color: str = settings.get("background_color", DEFAULT_BACKGROUND_COLOR)
+    content: str = settings.get("content", DEFAULT_CONTENT)
+    font_size: int = settings.get("font_size", DEFAULT_FONT_SIZE)
+    font: str = settings.get("font", DEFAULT_FONT)
+
     top = tk.Toplevel(root)
     top.attributes("-topmost", True)
     top.overrideredirect(True)
-    top.configure(bg="#4A90E2")
-    # top.wm_attributes('-alpha', 0.8) # not works well with Linux
+    top.configure(bg=background_color)
 
-    default_text = "Your text here"
+    # top.wm_attributes('-alpha', 0.8) # not works well with Linux
 
     label_text = tk.Label(
         top,
-        text=default_text,
-        font=("Helvetica", 12, "bold"),
-        fg="white",
-        bg="#4A90E2",
+        text=content,
+        font=(font, font_size),
+        fg=color,
+        bg=background_color,
         justify="left",
         anchor="w",
         bd=0,  # bd=2

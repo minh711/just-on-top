@@ -10,7 +10,11 @@ PADDING = 12
 
 # Defaults
 DEFAULT_LANGUAGE = "English"
-DEFAULT_TEXT = "Your text here"
+DEFAULT_CONTENT = "Your text here"
+DEFAULT_COLOR = "#FFFFFF"
+DEFAULT_BACKGROUND_COLOR = "#4A90E2"
+DEFAULT_FONT = "Helvetica"
+DEFAULT_FONT_SIZE = 12
 
 # Symbols to insert ⭕💠⚫⚪🔘🔴🟠🟡🟤🟣🔵🔵🟢
 SYMBOLS = ["•", "⬜", "✅", "❎", "⭢", "⭐"]

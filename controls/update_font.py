@@ -1,6 +1,9 @@
 import customtkinter as ctk
 import tkinter as tk
 import tkinter.font as tkfont
+from models.settings import Settings
+from utils.settings import load_settings, update_settings
+from utils.constants import DEFAULT_FONT_SIZE, PADDING
 
 
 def center_window_on_parent(window, parent, width, height):
@@ -16,7 +19,7 @@ def center_window_on_parent(window, parent, width, height):
     window.geometry(f"{width}x{height}+{x}+{y}")
 
 
-def choose_font(parent):
+def choose_font(parent, floating_window, label_text):
     def update_listbox(*_):
         typed = search_var.get().lower()
         for label in font_labels:
@@ -35,18 +38,28 @@ def choose_font(parent):
             text=f"Selected: {font_name}",
             font=ctk.CTkFont(family=font_name, weight="bold", size=14),
         )
-        print("Selected font:", font_name)
+        settings: Settings = load_settings()
+        update_settings({"font": font_name})
+
+        font_size = settings.get("font_size", DEFAULT_FONT_SIZE)
+        label_text.configure(font=(font_name, font_size))
+        floating_window.update_idletasks()
+
+        label_width = label_text.winfo_reqwidth()
+        label_height = label_text.winfo_reqheight()
+
+        window_width = label_width + PADDING * 2
+        window_height = label_height + PADDING * 2
+        floating_window.geometry(f"{window_width}x{window_height}")
 
     font_labels = []
 
     dialog = ctk.CTkToplevel()
-    dialog.withdraw()
     dialog.title("Choose Font")
-    dialog.grab_set()
+    dialog.withdraw()
     center_window_on_parent(dialog, parent, 300, 400)
 
     def on_close():
-        dialog.grab_release()
         dialog.destroy()
 
     dialog.protocol("WM_DELETE_WINDOW", on_close)
@@ -74,6 +87,7 @@ def choose_font(parent):
         label = ctk.CTkLabel(
             scroll_frame,
             text=font_name,
+            font=(font_name, DEFAULT_FONT_SIZE),
             anchor="w",
             cursor="hand2",
         )

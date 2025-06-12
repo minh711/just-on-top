@@ -2,6 +2,9 @@ import customtkinter as ctk
 import tkinter as tk
 from controls.language import languages
 from .window import adjust_window_size
+from utils.settings import load_settings, update_settings
+from models.settings import Settings
+from utils.constants import DEFAULT_FONT_SIZE, DEFAULT_FONT
 
 current_language = "English"  # Sync with main app if it's dynamic
 
@@ -22,9 +25,12 @@ def center_window_on_parent(window, parent, width, height):
 def adjust_font_size(parent, label_text):
     def on_confirm():
         try:
+            settings: Settings = load_settings()
+            font: str = settings.get("font", DEFAULT_FONT)
             font_size = int(spinbox.get())
             if font_size:
-                label_text.configure(font=("Helvetica", font_size, "bold"))
+                label_text.configure(font=(font, font_size))
+                update_settings({"font_size": font_size})
                 adjust_window_size(label_text)
         except ValueError:
             pass
@@ -37,12 +43,15 @@ def adjust_font_size(parent, label_text):
     center_window_on_parent(dialog, parent, 260, 150)
     dialog.grab_set()
 
+    settings: Settings = load_settings()
+    font_size: int = settings.get("font_size", DEFAULT_FONT_SIZE)
+
     ctk.CTkLabel(dialog, text=languages[current_language]["font_size_prompt"]).pack(
         padx=20, pady=(15, 5)
     )
 
     spinbox = ctk.CTkEntry(dialog, width=60)
-    spinbox.insert(0, "12")
+    spinbox.insert(0, font_size)
     spinbox.pack(pady=(0, 10))
 
     button = ctk.CTkButton(dialog, text="OK", command=on_confirm)
