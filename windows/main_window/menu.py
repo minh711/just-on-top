@@ -30,11 +30,11 @@ def setup_menu(root, control_window, reload_window, text_area=None, label_text=N
         )
         options_menu.add_command(
             label=texts["change_text_color"],
-            command=lambda: update_color_text(label_text),
+            command=lambda: update_color_text(label_text, control_window),
         )
         options_menu.add_command(
             label=texts["change_bg_color"],
-            command=lambda: update_color_background(label_text),
+            command=lambda: update_color_background(label_text, control_window),
         )
         options_menu.add_command(
             label=texts["adjust_font_size"],
