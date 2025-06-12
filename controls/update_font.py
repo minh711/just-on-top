@@ -3,19 +3,8 @@ import tkinter as tk
 import tkinter.font as tkfont
 
 
-def center_window(window, width, height):
-    screen_width = window.winfo_screenwidth()
-    screen_height = window.winfo_screenheight()
-
-    x = int((screen_width / 2) - (width / 2))
-    y = int((screen_height / 2) - (height / 2))
-
-    window.geometry(f"{width}x{height}+{x}+{y}")
-
-
 def center_window_on_parent(window, parent, width, height):
-    parent.update_idletasks()  # Make sure geometry info is up-to-date
-
+    parent.update_idletasks()
     parent_x = parent.winfo_x()
     parent_y = parent.winfo_y()
     parent_width = parent.winfo_width()
@@ -37,8 +26,8 @@ def choose_font(parent):
                 label.pack(fill="x", padx=5, pady=2)
 
     def on_select(font_name):
+        selected_label.configure(text=f"Selected: {font_name}")
         print("Selected font:", font_name)
-        dialog.destroy()
 
     # Preload fonts
     preload_root = tk.Tk()
@@ -49,17 +38,19 @@ def choose_font(parent):
 
     font_labels = []
 
-    # Create hidden dialog
     dialog = ctk.CTkToplevel()
     dialog.withdraw()
     dialog.title("Choose Font")
-    dialog.geometry("300x400")
-    # center_window(dialog, 300, 400)
     center_window_on_parent(dialog, parent, 300, 400)
-
     dialog.grab_set()
 
-    ctk.CTkLabel(dialog, text="Search font:").pack(pady=(10, 0))
+    # 🆕 Selected font label (inside dialog, above search)
+    selected_label = ctk.CTkLabel(
+        dialog, text="Selected: None", font=ctk.CTkFont(weight="bold")
+    )
+    selected_label.pack(pady=(10, 5))
+
+    ctk.CTkLabel(dialog, text="Search font:").pack()
 
     search_var = ctk.StringVar()
     search_entry = ctk.CTkEntry(
@@ -78,9 +69,8 @@ def choose_font(parent):
     update_listbox()
 
     def show_dialog():
-        dialog.update_idletasks()  # Ensure layout is flushed
-        dialog.deiconify()  # Show the fully rendered dialog
+        dialog.update_idletasks()
+        dialog.deiconify()
         search_entry.focus()
 
-    # Wait until all UI work is queued, then show
     dialog.after_idle(show_dialog)
