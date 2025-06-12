@@ -1,4 +1,5 @@
 import platform
+import os
 import customtkinter as ctk
 from tkinter import (
     scrolledtext,
@@ -77,11 +78,6 @@ def create_control_window(root, label_text, reload_window):
 
     # --- Buttons ---
     create_buttons(container, text_area, label_text)
-
-    # --- Icon (Windows only) ---
-    if platform.system() == "Windows":
-        icon_path = resource_path("assets/jot_icon.ico")
-        control_window.iconbitmap(icon_path)
 
     # --- Let window size to content ---
     control_window.update_idletasks()

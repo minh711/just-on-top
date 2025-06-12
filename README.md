@@ -48,9 +48,14 @@ Run this to install packages needed
 pip install -r requirements.txt
 ```
 
-## To-do list
+## Notes
 
-- [ ] Change opacity option
-- [ ] Save content
-- [ ] Split settings to the menu, only keep update and toggle button on the main window
-- [ ] Add preset theme switcher for floating window
+### Change icon
+
+Go to where the package placed, this case `venv`
+
+```bash
+customtkinter\assets\icons
+```
+
+Then replace the default `.ico` file with a different one with the same name.

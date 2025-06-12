@@ -1,6 +1,8 @@
 # Import the tkinter module for GUI components
 # import tkinter as tk
+import os
 import customtkinter as ctk
+import tkinter as tk
 from windows.windows_controller import create_windows
 
 
@@ -10,7 +12,6 @@ def main():
     ctk.set_default_color_theme("themes/light_theme.json")
 
     # Create the main hidden root window (required by tkinter)
-    # root = tk.Tk()
     root = ctk.CTk()
     root.withdraw()  # Hide the root window since we use custom windows
 

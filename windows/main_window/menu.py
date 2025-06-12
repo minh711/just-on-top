@@ -38,7 +38,7 @@ def setup_menu(root, control_window, reload_window, text_area=None, label_text=N
         )
         options_menu.add_command(
             label=texts["adjust_font_size"],
-            command=lambda: adjust_font_size(label_text),
+            command=lambda: adjust_font_size(label_text, control_window),
         )
         options_menu.add_command(
             label=texts["toggle_text"], command=lambda: toggle_window(label_text.master)

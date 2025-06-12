@@ -1,6 +1,6 @@
 import os
 import platform
-import tkinter as tk
+import tkinter as tk  # must use tkinter so it will on top of all virtual desktops
 from windows.floating_window.drag import start_drag, do_drag
 from utils.constants import PADDING
 
@@ -10,7 +10,7 @@ def create_floating_window(root):
     top.attributes("-topmost", True)
     top.overrideredirect(True)
     top.configure(bg="#4A90E2")
-    # top.wm_attributes('-alpha', 0.8)
+    # top.wm_attributes('-alpha', 0.8) # not works well with Linux
 
     default_text = "Your text here"
 
