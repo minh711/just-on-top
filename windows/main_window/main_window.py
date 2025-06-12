@@ -5,14 +5,18 @@ from tkinter import (
     scrolledtext,
 )  # No direct ctk replacement, can use CTkTextbox if scroll not needed
 from windows.main_window.menu import setup_menu
-from windows.main_window.controls import create_buttons
 from utils.file_ops import resource_path, save_text
 from utils.constants import SYMBOLS
 from utils.settings import update_settings
 from controls.text import update_text
+import controls.language as lang_module
+from controls.window import toggle_window
 
 
 def create_control_window(root, label_text, reload_window):
+    lang = lang_module.current_language
+    texts = lang_module.languages[lang]
+
     def exit_application():
         confirm = save_text()
         if confirm:
@@ -49,8 +53,10 @@ def create_control_window(root, label_text, reload_window):
     def toggle_settings():
         if settings_frame.winfo_ismapped():
             settings_frame.pack_forget()
+            control_window.minsize(width=440, height=440)
         else:
             settings_frame.pack(after=symbol_frame, fill="x", pady=(0, 10))
+            control_window.minsize(width=440, height=600)
 
         control_window.update_idletasks()
 
@@ -101,11 +107,15 @@ def create_control_window(root, label_text, reload_window):
         root, control_window, reload_window, text_area=text_area, label_text=label_text
     )
 
-    # --- Buttons ---
-    create_buttons(container, text_area, label_text)
+    # --- Toggle text button ---
+    ctk.CTkButton(
+        master=container,
+        text=texts["toggle_text"],
+        command=lambda: toggle_window(label_text.master),
+    ).pack(pady=5, padx=10, fill="x")
 
     # --- Let window size to content ---
     control_window.update_idletasks()
-    control_window.minsize(width=320, height=320)
+    control_window.minsize(width=440, height=440)
 
     return control_window, text_area
