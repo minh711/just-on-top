@@ -16,17 +16,6 @@ def center_window_on_parent(window, parent, width, height):
     window.geometry(f"{width}x{height}+{x}+{y}")
 
 
-# Cache fonts once to avoid repeated delays
-def get_cached_fonts():
-    if not hasattr(get_cached_fonts, "fonts"):
-        preload_root = tk.Tk()
-        preload_root.withdraw()
-        preload_root.update_idletasks()
-        get_cached_fonts.fonts = sorted(tkfont.families(preload_root))
-        preload_root.destroy()
-    return get_cached_fonts.fonts
-
-
 def choose_font(parent):
     def update_listbox(*_):
         typed = search_var.get().lower()
@@ -74,8 +63,8 @@ def choose_font(parent):
     scroll_frame = ctk.CTkScrollableFrame(dialog)
     scroll_frame.pack(padx=10, pady=10, fill="both", expand=True)
 
-    # Get fonts (cached)
-    all_fonts = get_cached_fonts()
+    # Load all fonts using the existing parent/root
+    all_fonts = sorted(tkfont.families(parent))
 
     for font_name in all_fonts:
         label = ctk.CTkLabel(
@@ -83,7 +72,6 @@ def choose_font(parent):
             text=font_name,
             anchor="w",
             cursor="hand2",
-            # Do NOT apply font preview here to speed up
         )
         label.bind("<Button-1>", lambda e, f=font_name: on_select(f))
         font_labels.append(label)
@@ -96,18 +84,3 @@ def choose_font(parent):
         search_entry.focus()
 
     dialog.after_idle(show_dialog)
-
-
-# Example usage
-if __name__ == "__main__":
-    ctk.set_appearance_mode("System")
-    ctk.set_default_color_theme("blue")
-
-    root = ctk.CTk()
-    root.geometry("400x200")
-    root.title("Font Chooser Test")
-
-    button = ctk.CTkButton(root, text="Choose Font", command=lambda: choose_font(root))
-    button.pack(pady=50)
-
-    root.mainloop()
