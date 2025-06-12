@@ -21,6 +21,7 @@
     "relx",
     "tearoff",
     "textvariable",
+    "tkfont",
     "transparentcolor",
     "ttkbootstrap",
     "venv",

@@ -17,8 +17,8 @@ def resource_path(relative_path):
 
 # Main function to start the application
 def main():
-    ctk.set_appearance_mode("Light")  # or "Dark"
-    ctk.set_default_color_theme(resource_path("themes/light_theme.json"))
+    ctk.set_appearance_mode("Dark")
+    # ctk.set_default_color_theme(resource_path("themes/light_theme.json")) // TODO
 
     # Create the main hidden root window (required by tkinter)
     root = ctk.CTk()
