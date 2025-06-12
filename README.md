@@ -52,10 +52,18 @@ pip install -r requirements.txt
 
 ### Change icon
 
-Go to where the package placed, this case `venv`
+Go to where the package placed:
 
 ```bash
 customtkinter\assets\icons
 ```
 
 Then replace the default `.ico` file with a different one with the same name.
+
+## Deployment
+
+Script:
+
+```bash
+pyinstaller --noconsole --onefile main.py --icon=assets/jot_icon.ico --add-data "themes/dark_theme.json;themes" --add-data "themes/light_theme.json;themes"
+```
