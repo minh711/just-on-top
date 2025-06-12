@@ -2,7 +2,7 @@
 
 Open-source Python application for display a text always on top
 
-![image](https://github.com/user-attachments/assets/f03032ef-8f94-4060-b910-241e1dfde547)
+![image](https://github.com/user-attachments/assets/43732839-9000-490d-80ef-404a1efa59e6)
 
 ## Development
 
