@@ -20,10 +20,15 @@ def choose_font(parent):
     def update_listbox(*_):
         typed = search_var.get().lower()
         for label in font_labels:
-            label.pack_forget()
-        for label in font_labels:
-            if typed in label.cget("text").lower():
-                label.pack(fill="x", padx=5, pady=2)
+            font_name = label.cget("text").lower()
+            if typed in font_name:
+                if not getattr(label, "visible", False):
+                    label.pack(fill="x", padx=5, pady=2)
+                    label.visible = True
+            else:
+                if getattr(label, "visible", True):
+                    label.pack_forget()
+                    label.visible = False
 
     def on_select(font_name):
         selected_label.configure(
@@ -63,8 +68,7 @@ def choose_font(parent):
     scroll_frame = ctk.CTkScrollableFrame(dialog)
     scroll_frame.pack(padx=10, pady=10, fill="both", expand=True)
 
-    # Load all fonts using the existing parent/root
-    all_fonts = sorted(tkfont.families(parent))
+    all_fonts = sorted(tkfont.families())
 
     for font_name in all_fonts:
         label = ctk.CTkLabel(
