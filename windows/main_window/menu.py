@@ -43,7 +43,9 @@ def setup_menu(root, control_window, reload_window, text_area=None, label_text=N
         options_menu.add_command(
             label=texts["toggle_text"], command=lambda: toggle_window(label_text.master)
         )
-        options_menu.add_command(label="Change Font", command=choose_font)
+        options_menu.add_command(
+            label="Change Font", command=lambda: choose_font(control_window)
+        )
 
     # Language Submenu
     language_menu = Menu(options_menu, tearoff=0)

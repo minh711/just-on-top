@@ -11,7 +11,6 @@ from windows.windows_controller import create_windows
 
 
 def resource_path(relative_path):
-    """Get path to resource during execution"""
     return os.path.join(os.path.dirname(__file__), relative_path)
 
 

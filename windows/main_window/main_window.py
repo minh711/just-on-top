@@ -12,6 +12,16 @@ from controls.window import toggle_window
 from windows.main_window.settings_panel import build_settings_frame
 
 
+def center_window(window, width, height):
+    screen_width = window.winfo_screenwidth()
+    screen_height = window.winfo_screenheight()
+
+    x = int((screen_width / 2) - (width / 2))
+    y = int((screen_height / 2) - (height / 2))
+
+    window.geometry(f"{width}x{height}+{x}+{y}")
+
+
 def create_control_window(root, label_text, reload_window):
     # Languages
     lang = lang_module.current_language
@@ -113,5 +123,6 @@ def create_control_window(root, label_text, reload_window):
     # Final Layout Adjustments
     control_window.update_idletasks()
     control_window.minsize(width=440, height=440)
+    center_window(control_window, 440, 440)
 
     return control_window, text_area

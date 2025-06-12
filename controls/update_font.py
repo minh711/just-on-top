@@ -3,7 +3,31 @@ import tkinter as tk
 import tkinter.font as tkfont
 
 
-def choose_font():
+def center_window(window, width, height):
+    screen_width = window.winfo_screenwidth()
+    screen_height = window.winfo_screenheight()
+
+    x = int((screen_width / 2) - (width / 2))
+    y = int((screen_height / 2) - (height / 2))
+
+    window.geometry(f"{width}x{height}+{x}+{y}")
+
+
+def center_window_on_parent(window, parent, width, height):
+    parent.update_idletasks()  # Make sure geometry info is up-to-date
+
+    parent_x = parent.winfo_x()
+    parent_y = parent.winfo_y()
+    parent_width = parent.winfo_width()
+    parent_height = parent.winfo_height()
+
+    x = parent_x + int((parent_width / 2) - (width / 2))
+    y = parent_y + int((parent_height / 2) - (height / 2))
+
+    window.geometry(f"{width}x{height}+{x}+{y}")
+
+
+def choose_font(parent):
     def update_listbox(*_):
         typed = search_var.get().lower()
         for label in font_labels:
@@ -30,6 +54,9 @@ def choose_font():
     dialog.withdraw()
     dialog.title("Choose Font")
     dialog.geometry("300x400")
+    # center_window(dialog, 300, 400)
+    center_window_on_parent(dialog, parent, 300, 400)
+
     dialog.grab_set()
 
     ctk.CTkLabel(dialog, text="Search font:").pack(pady=(10, 0))
