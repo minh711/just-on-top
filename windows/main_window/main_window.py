@@ -19,7 +19,7 @@ def create_control_window(root, label_text, reload_window):
             root.quit()
             root.destroy()
 
-    control_window = root
+    control_window = ctk.CTkToplevel(root)
     control_window.title("Just On Top")
     control_window.protocol("WM_DELETE_WINDOW", exit_application)
 
@@ -46,12 +46,37 @@ def create_control_window(root, label_text, reload_window):
         )
         btn.pack(side="left", padx=2)
 
+    def toggle_settings():
+        if settings_frame.winfo_ismapped():
+            settings_frame.pack_forget()
+        else:
+            settings_frame.pack(after=symbol_frame, fill="x", pady=(0, 10))
+
+        control_window.update_idletasks()
+
+        # Manually resize window to fit content
+        new_width = control_window.winfo_reqwidth()
+        new_height = control_window.winfo_reqheight()
+        control_window.geometry(f"{new_width}x{new_height}")
+
+    btn_settings = ctk.CTkButton(
+        master=symbol_frame,
+        text="Settings",
+        command=toggle_settings,
+        width=80,
+    )
+    btn_settings.pack(side="right")
+
+    # --- Settings Frame (initially hidden) ---
+    settings_frame = ctk.CTkFrame(container)
+    # Don't pack now — starts hidden
+
     # --- Text Area ---
     text_area = ctk.CTkTextbox(
         master=container,
         width=400,
         height=160,
-        font=("Helvetica", 12),
+        font=("Helvetica", 16),
         wrap="word",
     )
     text_area.pack(fill="both", expand=True, pady=(0, 10))
