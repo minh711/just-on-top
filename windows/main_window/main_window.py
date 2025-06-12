@@ -9,7 +9,6 @@ from utils.settings import update_settings
 from controls.text import update_text
 import controls.language as lang_module
 from controls.window import toggle_window
-from windows.main_window.settings_panel import build_settings_frame
 
 
 def center_window(window, width, height):
@@ -57,30 +56,6 @@ def create_control_window(root, label_text, reload_window):
             width=30,
         ).pack(side="left", padx=2)
     # ===================== End symbols =====================
-
-    # ===================== Settings toggle =====================
-    settings_frame = build_settings_frame(container)
-
-    def toggle_settings():
-        if settings_frame.winfo_ismapped():
-            settings_frame.pack_forget()
-            control_window.minsize(width=440, height=440)
-        else:
-            settings_frame.pack(after=symbol_frame, fill="x", pady=(0, 10))
-            control_window.minsize(width=440, height=600)
-
-        control_window.update_idletasks()
-        control_window.geometry(
-            f"{control_window.winfo_reqwidth()}x{control_window.winfo_reqheight()}"
-        )
-
-    ctk.CTkButton(
-        master=symbol_frame,
-        text="Settings",
-        command=toggle_settings,
-        width=80,
-    ).pack(side="right")
-    # ===================== End settings toggle =====================
 
     # ===================== Text area =====================
     text_area = ctk.CTkTextbox(
