@@ -19,7 +19,7 @@ def create_control_window(root, label_text, reload_window):
             root.quit()
             root.destroy()
 
-    control_window = ctk.CTkToplevel(root)
+    control_window = root
     control_window.title("Just On Top")
     control_window.protocol("WM_DELETE_WINDOW", exit_application)
 

@@ -13,7 +13,7 @@ def main():
 
     # Create the main hidden root window (required by tkinter)
     root = ctk.CTk()
-    root.withdraw()  # Hide the root window since we use custom windows
+    # root.withdraw()  # Hide the root window since we use custom windows
 
     # Create custom floating and control windows
     create_windows(root)
