@@ -53,6 +53,7 @@ def choose_font(parent):
     ctk.CTkLabel(dialog, text="Search font:").pack()
 
     search_var = ctk.StringVar()
+    search_var.trace_add("write", update_listbox)
     search_entry = ctk.CTkEntry(
         dialog, textvariable=search_var, placeholder_text="Type to search..."
     )
