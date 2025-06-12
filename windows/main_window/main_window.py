@@ -1,6 +1,8 @@
 import platform
-import tkinter as tk
-from tkinter import scrolledtext
+import customtkinter as ctk
+from tkinter import (
+    scrolledtext,
+)  # No direct ctk replacement, can use CTkTextbox if scroll not needed
 from windows.main_window.menu import setup_menu
 from windows.main_window.controls import create_buttons
 from utils.file_ops import resource_path, save_text
@@ -16,17 +18,16 @@ def create_control_window(root, label_text, reload_window):
             root.quit()
             root.destroy()
 
-    control_window = tk.Toplevel(root)
+    control_window = ctk.CTkToplevel(root)
     control_window.title("Just On Top")
-    control_window.configure(bg="#F0F0F0")
     control_window.protocol("WM_DELETE_WINDOW", exit_application)
 
     # --- Container Frame ---
-    container = tk.Frame(control_window, bg="#F0F0F0")
+    container = ctk.CTkFrame(control_window)
     container.pack(fill="both", expand=True, padx=10, pady=10)
 
     # --- Symbol Buttons ---
-    symbol_frame = tk.Frame(container, bg="#F0F0F0")
+    symbol_frame = ctk.CTkFrame(container)
     symbol_frame.pack(fill="x", pady=(0, 10))
 
     def insert_symbol(symbol):
@@ -35,31 +36,24 @@ def create_control_window(root, label_text, reload_window):
 
     symbols = SYMBOLS
     for sym in symbols:
-        btn = tk.Button(
-            symbol_frame,
+        btn = ctk.CTkButton(
+            master=symbol_frame,
             text=sym,
             font=("Helvetica", 12),
             command=lambda s=sym: insert_symbol(s),
-            width=3,
+            width=30,
         )
         btn.pack(side="left", padx=2)
 
     # --- Text Area ---
-    text_area = scrolledtext.ScrolledText(
-        container,
-        width=36,
-        height=8,
-        bg="#FFFFFF",
-        fg="black",
+    text_area = ctk.CTkTextbox(
+        master=container,
+        width=400,
+        height=160,
         font=("Helvetica", 12),
-        undo=True,
+        wrap="word",
     )
     text_area.pack(fill="both", expand=True, pady=(0, 10))
-
-    def on_text_change(event=None):
-        print("Text changed!")
-
-    text_area.bind("<KeyRelease>", on_text_change)
 
     save_after_id = None
 
@@ -69,8 +63,6 @@ def create_control_window(root, label_text, reload_window):
 
     def on_text_change(event=None):
         update_text(text_area, label_text)
-
-        # Debounced auto-save
         nonlocal save_after_id
         if save_after_id:
             control_window.after_cancel(save_after_id)
@@ -78,6 +70,7 @@ def create_control_window(root, label_text, reload_window):
 
     text_area.bind("<KeyRelease>", on_text_change)
 
+    # --- Menu ---
     setup_menu(
         root, control_window, reload_window, text_area=text_area, label_text=label_text
     )
@@ -85,14 +78,13 @@ def create_control_window(root, label_text, reload_window):
     # --- Buttons ---
     create_buttons(container, text_area, label_text)
 
-    # --- Set icon ---
+    # --- Icon (Windows only) ---
     if platform.system() == "Windows":
         icon_path = resource_path("assets/jot_icon.ico")
         control_window.iconbitmap(icon_path)
 
     # --- Let window size to content ---
     control_window.update_idletasks()
-    control_window.geometry("")  # Let Tkinter fit the window to its content
     control_window.minsize(width=320, height=320)
 
     return control_window, text_area

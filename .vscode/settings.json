@@ -5,6 +5,7 @@
     "appdirs",
     "bootstyle",
     "borderwidth",
+    "customtkinter",
     "highlightbackground",
     "highlightthickness",
     "initialfile",
