@@ -19,7 +19,7 @@ def center_window_on_parent(window, parent, width, height):
     window.geometry(f"{width}x{height}+{x}+{y}")
 
 
-def choose_font(parent, floating_window, label_text):
+def choose_font(parent, floating_window, label_text, text_area):
     def update_listbox(*_):
         typed = search_var.get().lower()
         for label in font_labels:
@@ -43,6 +43,7 @@ def choose_font(parent, floating_window, label_text):
 
         font_size = settings.get("font_size", DEFAULT_FONT_SIZE)
         label_text.configure(font=(font_name, font_size))
+        text_area.configure(font=(font_name, font_size))
         floating_window.update_idletasks()
 
         label_width = label_text.winfo_reqwidth()

@@ -4,7 +4,7 @@ import customtkinter as ctk
 from tkinter import scrolledtext  # Still no CTk replacement with scrollbar
 from windows.main_window.menu import setup_menu
 from utils.file_ops import resource_path, save_text
-from utils.constants import SYMBOLS, DEFAULT_FONT, DEFAULT_FONT_SIZE
+from utils.constants import SYMBOLS, DEFAULT_FONT, DEFAULT_FONT_SIZE, DEFAULT_CONTENT
 from utils.settings import update_settings
 from controls.text import update_text
 import controls.language as lang_module
@@ -69,7 +69,7 @@ def create_control_window(root, floating_window, label_text, reload_window):
         master=container,
         width=400,
         height=160,
-        font=(font, font_size),
+        font=(font, font_size + 4),
         wrap="word",
     )
     text_area.insert("1.0", content)

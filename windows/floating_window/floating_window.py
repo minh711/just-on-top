@@ -19,6 +19,8 @@ def create_floating_window(root):
     color: str = settings.get("color", DEFAULT_COLOR)
     background_color: str = settings.get("background_color", DEFAULT_BACKGROUND_COLOR)
     content: str = settings.get("content", DEFAULT_CONTENT)
+    if content == "":
+        content = DEFAULT_CONTENT
     font_size: int = settings.get("font_size", DEFAULT_FONT_SIZE)
     font: str = settings.get("font", DEFAULT_FONT)
 

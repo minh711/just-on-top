@@ -34,7 +34,7 @@ def setup_menu(
     if text_area and label_text:
         options_menu.add_command(
             label=texts["adjust_font_size"],
-            command=lambda: adjust_font_size(control_window, label_text),
+            command=lambda: adjust_font_size(control_window, label_text, text_area),
         )
 
         options_menu.add_command(
@@ -51,7 +51,9 @@ def setup_menu(
 
         options_menu.add_command(
             label="Change font",
-            command=lambda: choose_font(control_window, floating_window, label_text),
+            command=lambda: choose_font(
+                control_window, floating_window, label_text, text_area
+            ),
         )
 
     # Language Submenu

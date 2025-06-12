@@ -22,7 +22,7 @@ def center_window_on_parent(window, parent, width, height):
     window.geometry(f"{width}x{height}+{x}+{y}")
 
 
-def adjust_font_size(parent, label_text):
+def adjust_font_size(parent, label_text, text_area):
     def on_confirm():
         try:
             settings: Settings = load_settings()
@@ -30,6 +30,7 @@ def adjust_font_size(parent, label_text):
             font_size = int(spinbox.get())
             if font_size:
                 label_text.configure(font=(font, font_size))
+                text_area.configure(font=(font, font_size))
                 update_settings({"font_size": font_size})
                 adjust_window_size(label_text)
         except ValueError:
