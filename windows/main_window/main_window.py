@@ -39,11 +39,11 @@ def create_control_window(root, floating_window, label_text, reload_window):
 
     # Container frame
     container = ctk.CTkFrame(control_window)
-    container.pack(fill="both", expand=True, padx=10, pady=10)
+    container.pack(fill="both", expand=True, padx=8, pady=8)
 
     # ===================== Symbols =====================
     symbol_frame = ctk.CTkFrame(container)
-    symbol_frame.pack(fill="x", pady=(0, 10))
+    symbol_frame.pack(fill="x", padx=8, pady=8)
 
     def insert_symbol(symbol):
         text_area.insert("insert", symbol)
@@ -56,7 +56,7 @@ def create_control_window(root, floating_window, label_text, reload_window):
             font=("Helvetica", 12),
             command=lambda s=sym: insert_symbol(s),
             width=30,
-        ).pack(side="left", padx=2)
+        ).pack(side="left", padx=(8, 0), pady=8)
         # ===================== End symbols =====================
 
     # ===================== Text area =====================
@@ -73,7 +73,7 @@ def create_control_window(root, floating_window, label_text, reload_window):
         wrap="word",
     )
     text_area.insert("1.0", content)
-    text_area.pack(fill="both", expand=True, pady=(0, 10))
+    text_area.pack(fill="both", expand=True, padx=8, pady=(0, 8))
 
     save_after_id = None
 
@@ -106,7 +106,7 @@ def create_control_window(root, floating_window, label_text, reload_window):
         master=container,
         text=texts["toggle_text"],
         command=lambda: toggle_window(label_text.master),
-    ).pack(pady=5, padx=10, fill="x")
+    ).pack(pady=(0, 8), padx=8, fill="x")
 
     # Final Layout Adjustments
     control_window.update_idletasks()
