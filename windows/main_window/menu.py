@@ -2,12 +2,11 @@ from tkinter import Menu
 import controls.language as lang_module
 from windows.guide_window.guide_window import GuideWindow
 from utils.file_ops import save_text
-from utils.settings import save_settings
+from utils.settings import update_settings
 
 from controls.text import update_text
 from controls.color import update_color_text, update_color_background
 from controls.font import adjust_font_size
-from controls.window import toggle_window
 from controls.update_font import choose_font
 from tkinter import messagebox
 
@@ -33,11 +32,6 @@ def setup_menu(
     # --- Move control actions to Options menu ---
     if text_area and label_text:
         options_menu.add_command(
-            label=texts["adjust_font_size"],
-            command=lambda: adjust_font_size(control_window, label_text, text_area),
-        )
-
-        options_menu.add_command(
             label=texts["change_text_color"],
             command=lambda: update_color_text(label_text, control_window),
         )
@@ -47,6 +41,16 @@ def setup_menu(
             command=lambda: update_color_background(
                 label_text, control_window, floating_window
             ),
+        )
+
+        options_menu.add_command(
+            label="Toggle Bordered",
+            command=lambda: toggle_bordered(reload_window),
+        )
+
+        options_menu.add_command(
+            label=texts["adjust_font_size"],
+            command=lambda: adjust_font_size(control_window, label_text, text_area),
         )
 
         options_menu.add_command(
@@ -93,5 +97,15 @@ def set_language(language, root, reload_window):
     confirm = save_text()
     if confirm:
         lang_module.current_language = language
-        save_settings({"language": language})
+        update_settings({"language": language})
         reload_window()
+
+
+def toggle_bordered(reload_window):
+    from utils.settings import load_settings
+
+    settings = load_settings()
+    current = settings.get("bordered", 1)
+    new_value = 0 if current else 1
+    update_settings({"bordered": new_value})
+    reload_window()

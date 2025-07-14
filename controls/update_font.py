@@ -3,7 +3,7 @@ import tkinter as tk
 import tkinter.font as tkfont
 from models.settings import Settings
 from utils.settings import load_settings, update_settings
-from utils.constants import DEFAULT_FONT_SIZE, PADDING
+from utils.constants import DEFAULT_FONT_SIZE, BORDER_WIDTH
 
 
 def center_window_on_parent(window, parent, width, height):
@@ -49,9 +49,9 @@ def choose_font(parent, floating_window, label_text, text_area):
         label_width = label_text.winfo_reqwidth()
         label_height = label_text.winfo_reqheight()
 
-        window_width = label_width + PADDING * 2
-        window_height = label_height + PADDING * 2
-        floating_window.geometry(f"{window_width}x{window_height}")
+        window_width = label_width + BORDER_WIDTH * 2
+        window_height = label_height + BORDER_WIDTH * 2
+        floating_window.winfo_toplevel().geometry(f"{window_width}x{window_height}")
 
     font_labels = []
 

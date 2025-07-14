@@ -1,4 +1,4 @@
-from utils.constants import PADDING
+from utils.constants import BORDER_WIDTH
 
 
 def adjust_window_size(label_text):
@@ -8,10 +8,10 @@ def adjust_window_size(label_text):
     label_width = label_text.winfo_reqwidth()
     label_height = label_text.winfo_reqheight()
 
-    window_width = label_width + PADDING * 2
-    window_height = label_height + PADDING * 2
+    window_width = label_width + BORDER_WIDTH * 2
+    window_height = label_height + BORDER_WIDTH * 2
 
-    label_text.master.geometry(f"{window_width}x{window_height}")
+    label_text.winfo_toplevel().geometry(f"{window_width}x{window_height}")
 
 
 def toggle_window(top):

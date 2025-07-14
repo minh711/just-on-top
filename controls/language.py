@@ -1,5 +1,5 @@
 from languages.languages import languages
-from utils.settings import load_settings, save_settings
+from utils.settings import load_settings, update_settings
 from models.settings import Settings
 from utils.constants import DEFAULT_LANGUAGE
 
@@ -15,6 +15,5 @@ def set_language(language: str, root, reload_window):
     confirm = save_text()
     if confirm:
         lang_module.current_language = language
-        new_settings: Settings = {"language": language}
-        save_settings(new_settings)
+        update_settings({"language": language})
         reload_window(root)

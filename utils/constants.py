@@ -7,6 +7,7 @@ TEXTAREA_BG = "#FFFFFF"
 TEXTAREA_FG = "black"
 TEXTAREA_FONT = ("Helvetica", 12)
 PADDING = 12
+BORDER_WIDTH = 2
 
 # Defaults
 DEFAULT_LANGUAGE = "English"

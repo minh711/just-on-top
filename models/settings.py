@@ -8,3 +8,4 @@ class Settings(TypedDict, total=False):
     font_size: int
     color: str
     background_color: str
+    bordered: int
