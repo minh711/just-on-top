@@ -5,7 +5,9 @@ Feel free to use it, and I’d be really glad if someone wants to contribute and
 
 # Just on Top
 
-Open-source Python application for display a text always on top
+Open-source Python application for display a text always on top.
+
+***It stays on top even when switching desktops/workspaces!***
 
 ![image](https://github.com/user-attachments/assets/43732839-9000-490d-80ef-404a1efa59e6)
 
