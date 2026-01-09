@@ -1,3 +1,8 @@
+I don’t think I can work on this project any further.
+Feel free to use it, and I’d be really glad if someone wants to contribute and improve it.
+
+---
+
 # Just on Top
 
 Open-source Python application for display a text always on top
