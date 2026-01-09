@@ -1,1 +1,3 @@
 appdirs
+packaging
+darkdetect

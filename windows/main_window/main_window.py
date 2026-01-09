@@ -105,7 +105,7 @@ def create_control_window(root, floating_window, label_text, reload_window):
     ctk.CTkButton(
         master=container,
         text=texts["toggle_text"],
-        command=lambda: toggle_window(label_text.master),
+        command=lambda: toggle_window(floating_window),
     ).pack(pady=(0, 8), padx=8, fill="x")
 
     # Final Layout Adjustments
